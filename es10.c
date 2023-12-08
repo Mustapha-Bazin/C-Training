@@ -28,8 +28,8 @@ int main(){
 	}
 	
 	if(f){
-		printf("e un numero\n");
+		printf("is a number\n");
 	}else{
-		printf("non e un numero\n");
+		printf("is not a numeber\n");
 	}
 }

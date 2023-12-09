@@ -1,35 +1,55 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#ifndef LEN_S
+#define LEN_S 20
+#endif
+
+void is_number(char string[],int min,int max);
+
 int main(){
-	
-	char s[20];
-	char input[5];
+
 	int a,b;
-	
-	printf("inserisci la stringa\n");
+	char s[LEN_S],input[5];
+	printf("inserici la tua stringa \n");
 	fgets(s,sizeof(s),stdin);
+	printf("      ***\n");
+	
+	printf("inserici i borni della sotto stringa:\n");
 	do{
-		printf("inserisci il valore di a\n");
+		printf("!!! min deve essere <= max && max <=LEN_S-1 !!!\n");
+		printf("***the min:\n");
 		fgets(input,sizeof(input),stdin);
 		a=strtol(input,NULL,10);
-
-		printf("inserisci il valore di b\n");
+		
+		printf("***the max:\n");
 		fgets(input,sizeof(input),stdin);
-		b=strtol(input,NULL,10);
-	}while(a>b || a<0 && b>sizeof(s) );
+		b=atoi(input);
+		
+	}while(a>b || b>LEN_S);
 	
-	int f=1;
-	if(s[a]=='+'|| s[a]=='-') a++;
-	for(int i=a;i<=b && f; i++){
-		if(s[i]<'0'||s[i]>'9'){
-			f=0;
+	
+	is_number(s,a,b);
+	
+	printf("FIN!!\n");
+	return 0;
+
+}
+void is_number(char string[],int min,int max){
+	int i,b=1;
+	for(i=min;i<=max && b;i++){
+		if(string[i]>='0' && string[i]<='9'){
+		//printf("hello");
+			b=1;
+		}else{
+			b=0;
 		}
 	}
 	
-	if(f){
-		printf("is a number\n");
+	if(b){
+		printf("la sottostringa e un numero\n");
 	}else{
-		printf("is not a numeber\n");
+		printf("la sottostringa non e un numero\n");
 	}
+
 }
